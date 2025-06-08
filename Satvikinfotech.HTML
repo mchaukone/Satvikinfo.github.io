@@ -1,0 +1,1645 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Satvik Infotech - आपका भरोसेमंद IT सर्विस प्रोवाइडर</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #3b82f6;
+            --text-color: #333;
+            --light-color: #f8fafc;
+            --dark-color: #1e293b;
+        }
+
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: #f5f7fa;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            height: 50px;
+            width: 50px;
+            margin-right: 10px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .logo-text h1 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-weight: 700;
+        }
+
+        .logo-text p {
+            font-size: 0.8rem;
+            color: var(--text-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+            position: relative;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            bottom: -5px;
+            left: 0;
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+
+        .language-toggle {
+            display: flex;
+            align-items: center;
+            margin-left: 15px;
+            cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .language-toggle:hover {
+            background-color: #f1f5f9;
+        }
+
+        .language-toggle i {
+            margin-right: 5px;
+            color: var(--primary-color);
+        }
+
+        /* Hero Section with Video Background */
+        .hero {
+        position: relative;
+        height: 100vh;
+        padding-top: 80px;
+        overflow: hidden;
+        display: flex;
+        align-items: flex-end; /* यह लाइन टेक्स्ट को नीचे लाने के लिए जोड़ी गई है */
+        padding-bottom: 100px; /* नीचे से पैडिंग बढ़ाई गई है */
+    }
+        
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        .video-background video {
+            min-width: 100%;
+            min-height: 100%;
+            object-fit: cover;
+        }
+        
+        .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        margin: 0 auto;
+        animation: fadeInUp 1s ease;
+        text-align: center;
+        color: white;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+        margin-bottom: 50px; /* यह लाइन टेक्स्ट को और नीचे लाने के लिए जोड़ी गई है */
+    }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        /* Services Section */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: var(--primary-color);
+            bottom: -10px;
+            left: 25%;
+        }
+
+        .section-title p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: -1;
+        }
+
+        .service-card:hover::before {
+            opacity: 1;
+        }
+
+        .service-card:hover .service-icon,
+        .service-card:hover h3,
+        .service-card:hover p {
+            color: white;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin: 30px 0 20px;
+            transition: all 0.3s;
+        }
+
+        .service-content {
+            padding: 0 30px 30px;
+            text-align: center;
+        }
+
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark-color);
+            transition: all 0.3s;
+        }
+
+        .service-content p {
+            color: #666;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+
+        /* Video Section */
+        .video-section {
+            background-color: var(--light-color);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .video-description {
+            margin-top: 20px;
+            color: #555;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--light-color);
+        }
+
+        .about-container {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+
+        .about-img {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .about-img:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-content h2 {
+            font-size: 2.2rem;
+            color: var(--dark-color);
+            margin-bottom: 20px;
+        }
+
+        .about-content p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .features-list {
+            margin: 30px 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .feature-icon {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-right: 15px;
+            margin-top: 3px;
+        }
+
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 250px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .portfolio-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(37, 99, 235, 0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-item:hover .portfolio-img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            transform: translateY(20px);
+            transition: transform 0.3s;
+        }
+
+        .portfolio-overlay p {
+            color: white;
+            transform: translateY(20px);
+            transition: transform 0.3s 0.1s;
+        }
+
+        .portfolio-item:hover .portfolio-overlay h3,
+        .portfolio-item:hover .portfolio-overlay p {
+            transform: translateY(0);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background-color: var(--light-color);
+        }
+
+        .testimonials-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial-item {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            margin: 0 15px;
+            display: none;
+        }
+
+        .testimonial-item.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .client-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 3px solid var(--primary-color);
+        }
+
+        .client-rating {
+            color: #fbbf24;
+            margin-bottom: 15px;
+        }
+
+        .client-quote {
+            font-style: italic;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .client-info h4 {
+            font-size: 1.2rem;
+            color: var(--dark-color);
+            margin-bottom: 5px;
+        }
+
+        .client-info p {
+            color: #666;
+        }
+
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            background-color: #cbd5e1;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .slider-dot.active {
+            background-color: var(--primary-color);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 50px;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            color: var(--dark-color);
+            margin-bottom: 20px;
+        }
+
+        .contact-details {
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .contact-icon {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-right: 15px;
+            margin-top: 3px;
+        }
+
+        .director-photo {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+
+        .contact-text h4 {
+            font-size: 1.1rem;
+            color: var(--dark-color);
+            margin-bottom: 5px;
+        }
+
+        .contact-text p, .contact-text a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-text a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-color);
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .footer-col p {
+            margin-bottom: 15px;
+            color: #cbd5e1;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #cbd5e1;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .video-container video {
+                height: 350px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                padding: 20px 0;
+                clip-path: circle(0% at 100% 0);
+                transition: clip-path 0.5s ease;
+            }
+
+            nav.active {
+                clip-path: circle(150% at 100% 0);
+            }
+
+            nav ul {
+                flex-direction: column;
+            }
+
+            nav ul li {
+                margin: 15px 0;
+                text-align: center;
+            }
+
+            .language-toggle {
+                margin-left: 0;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .btn {
+                padding: 10px 20px;
+            }
+
+            .about-container {
+                flex-direction: column;
+            }
+            
+            .video-container video {
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .logo-text h1 {
+                font-size: 1.3rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .btn-group {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .btn-outline {
+                margin-left: 0;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .video-container video {
+                height: 200px;
+            }
+        }
+
+        /* Hidden elements for language toggle */
+        .english-content {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo">
+                <img src="satvikinfo.png" alt="Satvik Infotech Logo" class="logo-img" id="companyLogo">
+                <div class="logo-text">
+                    <h1>Satvik Infotech</h1>
+                    <p>आपका भरोसेमंद IT सर्विस प्रोवाइडर</p>
+                </div>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav id="nav">
+                <ul>
+                    <li><a href="#home" class="hindi-text">होम</a><a href="#home" class="english-text">Home</a></li>
+                    <li><a href="#services" class="hindi-text">सर्विसेज</a><a href="#services" class="english-text">Services</a></li>
+                    <li><a href="#about" class="hindi-text">हमारे बारे में</a><a href="#about" class="english-text">About</a></li>
+                    <li><a href="#portfolio" class="hindi-text">पोर्टफोलियो</a><a href="#portfolio" class="english-text">Portfolio</a></li>
+                    <li><a href="#contact" class="hindi-text">संपर्क</a><a href="#contact" class="english-text">Contact</a></li>
+                    <li>
+                        <div class="language-toggle" id="languageToggle">
+                            <i class="fas fa-language"></i>
+                            <span class="hindi-text">English</span>
+                            <span class="english-text">हिंदी</span>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section with Video Background -->
+    <section class="hero" id="home">
+        <div class="video-background">
+            <video autoplay muted loop id="heroVideo">
+                <source src="main.mp4" type="video/mp4">
+                <!-- यदि वीडियो फाइल HTML फाइल के साथ same folder में है तो सिर्फ फाइल नाम दें -->
+            </video>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hindi-text">प्रोफेशनल IT सर्विसेज वाड़ी, नागपुर में</h1>
+                <h1 class="english-text">Professional IT Services in Wadi, Nagpur</h1>
+                <p class="hindi-text">कंप्यूटर रिपेयर, CCTV इंस्टॉलेशन, नेटवर्किंग और कस्टम सॉफ्टवेयर सॉल्यूशंस</p>
+                <p class="english-text">Computer Repair, CCTV Installation, Networking and Custom Software Solutions</p>
+                <div class="btn-group">
+                    <a href="#contact" class="btn hindi-text">संपर्क करें</a>
+                    <a href="#contact" class="btn english-text">Contact Us</a>
+                    <a href="#services" class="btn btn-outline hindi-text">हमारी सर्विसेज</a>
+                    <a href="#services" class="btn btn-outline english-text">Our Services</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="hindi-text">हमारी सर्विसेज</h2>
+                <h2 class="english-text">Our Services</h2>
+                <p class="hindi-text">हम व्यक्तिगत और व्यावसायिक ग्राहकों के लिए विस्तृत श्रृंखला की IT सेवाएं प्रदान करते हैं</p>
+                <p class="english-text">We provide a wide range of IT services for individual and business clients</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-content">
+                        <i class="fas fa-laptop service-icon"></i>
+                        <h3 class="hindi-text">कंप्यूटर रिपेयर</h3>
+                        <h3 class="english-text">Computer Repair</h3>
+                        <p class="hindi-text">हार्डवेयर और सॉफ्टवेयर समस्याओं का निदान और मरम्मत, विंडोज/लिनक्स इंस्टॉलेशन, लैपटॉप स्क्रीन और कीबोर्ड प्रतिस्थापन</p>
+                        <p class="english-text">Diagnose and repair hardware and software issues, Windows/Linux installation, laptop screen and keyboard replacement</p>
+                        <a href="#contact" class="btn hindi-text">अधिक जानें</a>
+                        <a href="#contact" class="btn english-text">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <i class="fas fa-video service-icon"></i>
+                        <h3 class="hindi-text">CCTV इंस्टॉलेशन</h3>
+                        <h3 class="english-text">CCTV Installation</h3>
+                        <p class="hindi-text">HD/IP कैमरा सेटअप, मोबाइल/रिमोट व्यूइंग सुविधा, वार्षिक रखरखाव अनुबंध (AMC)</p>
+                        <p class="english-text">HD/IP camera setup, mobile/remote viewing facility, annual maintenance contract (AMC)</p>
+                        <a href="#contact" class="btn hindi-text">अधिक जानें</a>
+                        <a href="#contact" class="btn english-text">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <i class="fas fa-network-wired service-icon"></i>
+                        <h3 class="hindi-text">नेटवर्किंग</h3>
+                        <h3 class="english-text">Networking</h3>
+                        <p class="hindi-text">Wi-Fi राउटर इंस्टॉलेशन, LAN/WAN नेटवर्किंग, इंटरनेट कनेक्टिविटी समस्या निवारण</p>
+                        <p class="english-text">Wi-Fi router installation, LAN/WAN networking, internet connectivity troubleshooting</p>
+                        <a href="#contact" class="btn hindi-text">अधिक जानें</a>
+                        <a href="#contact" class="btn english-text">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <i class="fas fa-database service-icon"></i>
+                        <h3 class="hindi-text">डाटा रिकवरी</h3>
+                        <h3 class="english-text">Data Recovery</h3>
+                        <p class="hindi-text">हार्ड ड्राइव/SSD डेटा रिकवरी, क्लाउड बैकअप सेटअप, पेन ड्राइव और SD कार्ड से डेटा रिकवरी</p>
+                        <p class="english-text">Hard drive/SSD data recovery, cloud backup setup, data recovery from pen drives and SD cards</p>
+                        <a href="#contact" class="btn hindi-text">अधिक जानें</a>
+                        <a href="#contact" class="btn english-text">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <i class="fas fa-briefcase service-icon"></i>
+                        <h3 class="hindi-text">बिज़नेस सॉल्यूशंस</h3>
+                        <h3 class="english-text">Business Solutions</h3>
+                        <p class="hindi-text">बिलिंग, स्टॉक, अकाउंटिंग, POS, HR, स्कूल/कॉलेज, क्लिनिक आदि के लिए कस्टम सॉफ्टवेयर</p>
+                        <p class="english-text">Custom software for billing, stock, accounting, POS, HR, school/college, clinic etc.</p>
+                        <a href="#contact" class="btn hindi-text">अधिक जानें</a>
+                        <a href="#contact" class="btn english-text">Learn More</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-content">
+                        <i class="fas fa-parking service-icon"></i>
+                        <h3 class="hindi-text">पार्किंग सॉल्यूशंस</h3>
+                        <h3 class="english-text">Parking Solutions</h3>
+                        <p class="hindi-text">पार्किंग मैनेजमेंट सॉफ्टवेयर, हैंडल मशीन (टिकट प्रिंटर) आधारित सिस्टम, मशीन + सॉफ्टवेयर दोनों उपलब्ध</p>
+                        <p class="english-text">Parking management software, handle machine (ticket printer) based system, both machine + software available</p>
+                        <a href="#contact" class="btn hindi-text">अधिक जानें</a>
+                        <a href="#contact" class="btn english-text">Learn More</a>
+                    </div>
+                </div>
+                <!-- New Service Card 1 -->
+                <div class="service-card">
+                    <div class="service-content">
+                        <i class="fas fa-desktop service-icon"></i>
+                        <h3 class="hindi-text">कस्टमाइज्ड डेस्कटॉप सिस्टम</h3>
+                        <h3 class="english-text">Customized Desktop Systems</h3>
+                        <p class="hindi-text">आपकी जरूरतों के अनुसार हाई-परफॉरमेंस डेस्कटॉप असेंबल, गेमिंग पीसी, वर्कस्टेशन और सर्वर सिस्टम</p>
+                        <p class="english-text">High-performance desktop assembly according to your needs, gaming PCs, workstations and server systems</p>
+                        <a href="#contact" class="btn hindi-text">अधिक जानें</a>
+                        <a href="#contact" class="btn english-text">Learn More</a>
+                    </div>
+                </div>
+                <!-- New Service Card 2 -->
+                <div class="service-card">
+                    <div class="service-content">
+                        <i class="fas fa-shopping-cart service-icon"></i>
+                        <h3 class="hindi-text">नए प्रोडक्ट सेल</h3>
+                        <h3 class="english-text">New Product Sales</h3>
+                        <p class="hindi-text">नए कंप्यूटर कॉम्पोनेंट्स, एक्सेसरीज और IT उपकरणों की बिक्री - सर्वोत्तम गुणवत्ता और कीमत पर</p>
+                        <p class="english-text">Sales of new computer components, accessories and IT equipment - best quality and price</p>
+                        <a href="#contact" class="btn hindi-text">अधिक जानें</a>
+                        <a href="#contact" class="btn english-text">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Computer Repair Video Section -->
+    <section class="video-section">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="hindi-text">आपका भरोसेमंद IT सर्विस प्रोवाइडर जहां तकनीक मिलती है भरोसे से</h2>
+                <h2 class="english-text">Where technology meets trust</h2>
+                <p class="hindi-text">हमारा मिशन है अपने ग्राहकों को विश्वसनीय, कुशल और लागत प्रभावी IT समाधान प्रदान करना जो उनकी व्यक्तिगत और व्यावसायिक जरूरतों को पूरा करते हैं।</p>
+                <p class="english-text">Our mission is to provide our customers with reliable, efficient and cost-effective IT solutions that meet their personal and business needs.</p>
+            </div>
+            <div class="video-container">
+                <video controls autoplay muted loop>
+                    <source src="MAINPAGE.mp4" type="video/mp4">
+                    <!-- यदि वीडियो फाइल HTML फाइल के साथ same folder में है तो सिर्फ फाइल नाम दें -->
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="video-description">
+                <p class="hindi-text">हमारे विशेषज्ञ तकनीशियनों द्वारा कंप्यूटर रिपेयर की प्रक्रिया। हम सभी प्रकार के हार्डवेयर और सॉफ्टवेयर समस्याओं का समाधान करते हैं।</p>
+                <p class="english-text">Computer repair process by our expert technicians. We solve all types of hardware and software issues.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="about-container">
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Computer Repair Service">
+                </div>
+                <div class="about-content">
+                    <h2 class="hindi-text">Satvik Infotech के बारे में</h2>
+                    <h2 class="english-text">About Satvik Infotech</h2>
+                    <p class="hindi-text">Satvik Infotech वाड़ी, नागपुर स्थित एक भरोसेमंद IT सेवा प्रदाता है जो व्यक्तिगत और व्यावसायिक ग्राहकों को उच्च गुणवत्ता वाली तकनीकी समाधान प्रदान करता है।</p>
+                    <p class="english-text">Satvik Infotech is a trusted IT service provider based in Wadi, Nagpur that delivers high-quality technical solutions to individual and business clients.</p>
+                    <p class="hindi-text">हमारा मिशन है अपने ग्राहकों को विश्वसनीय, कुशल और लागत प्रभावी IT समाधान प्रदान करना जो उनकी व्यक्तिगत और व्यावसायिक जरूरतों को पूरा करते हैं।</p>
+                    <p class="english-text">Our mission is to provide our customers with reliable, efficient and cost-effective IT solutions that meet their personal and business needs.</p>
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle feature-icon"></i>
+                            <div class="feature-text">
+                                <h4 class="hindi-text">अनुभवी पेशेवर</h4>
+                                <h4 class="english-text">Experienced Professionals</h4>
+                                <p class="hindi-text">10+ वर्षों का उद्योग अनुभव</p>
+                                <p class="english-text">10+ years of industry experience</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle feature-icon"></i>
+                            <div class="feature-text">
+                                <h4 class="hindi-text">गुणवत्ता सेवा</h4>
+                                <h4 class="english-text">Quality Service</h4>
+                                <p class="hindi-text">100% ग्राहक संतुष्टि गारंटी</p>
+                                <p class="english-text">100% customer satisfaction guarantee</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-check-circle feature-icon"></i>
+                            <div class="feature-text">
+                                <h4 class="hindi-text">तत्काल सहायता</h4>
+                                <h4 class="english-text">Immediate Support</h4>
+                                <p class="hindi-text">24/7 आपातकालीन सेवा उपलब्ध</p>
+                                <p class="english-text">24/7 emergency service available</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#contact" class="btn hindi-text">हमसे संपर्क करें</a>
+                    <a href="#contact" class="btn english-text">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="section" id="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="hindi-text">हमारा कार्य</h2>
+                <h2 class="english-text">Our Work</h2>
+                <p class="hindi-text">हमारे द्वारा किए गए कुछ उल्लेखनीय प्रोजेक्ट्स</p>
+                <p class="english-text">Some of our notable projects</p>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="computer.png" alt="Computer Repair" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3 class="hindi-text">कंप्यूटर रिपेयर</h3>
+                        <h3 class="english-text">Computer Repair</h3>
+                        <p class="hindi-text">लैपटॉप स्क्रीन प्रतिस्थापन</p>
+                        <p class="english-text">Laptop screen replacement</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="bosch-cameras.png" alt="CCTV Installation" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3 class="hindi-text">CCTV इंस्टॉलेशन</h3>
+                        <h3 class="english-text">CCTV Installation</h3>
+                        <p class="hindi-text">व्यावसायिक परिसर के लिए सुरक्षा प्रणाली</p>
+                        <p class="english-text">Security system for commercial premises</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Network Setup" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3 class="hindi-text">नेटवर्क सेटअप</h3>
+                        <h3 class="english-text">Network Setup</h3>
+                        <p class="hindi-text">ऑफिस नेटवर्किंग सॉल्यूशन</p>
+                        <p class="english-text">Office networking solution</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="Software Solutions.webp" alt="Software Solutions" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3 class="hindi-text">सॉफ्टवेयर सॉल्यूशंस</h3>
+                        <h3 class="english-text">Software Solutions</h3>
+                        <p class="hindi-text">कस्टम बिजनेस सॉफ्टवेयर डेवलपमेंट</p>
+                        <p class="english-text">Custom business software development</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="Data Recovery.webp" alt="Data Recovery" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3 class="hindi-text">डाटा रिकवरी</h3>
+                        <h3 class="english-text">Data Recovery</h3>
+                        <p class="hindi-text">क्रैश हार्ड ड्राइव से डेटा पुनर्प्राप्ति</p>
+                        <p class="english-text">Data recovery from crashed hard drive</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="Parking Solutions.jpg" alt="Parking Solutions" class="portfolio-img">
+                    <div class="portfolio-overlay">
+                        <h3 class="hindi-text">पार्किंग सॉल्यूशंस</h3>
+                        <h3 class="english-text">Parking Solutions</h3>
+                        <p class="hindi-text">ऑटोमेटेड पार्किंग मैनेजमेंट सिस्टम</p>
+                        <p class="english-text">Automated parking management system</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="hindi-text">ग्राहक प्रतिक्रिया</h2>
+                <h2 class="english-text">Client Testimonials</h2>
+                <p class="hindi-text">हमारे ग्राहक हमारे बारे में क्या कहते हैं</p>
+                <p class="english-text">What our clients say about us</p>
+            </div>
+            <div class="testimonials-slider">
+                <div class="testimonial-item active">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="client-img">
+                    <div class="client-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="client-quote hindi-text">"Satvik Infotech ने हमारे ऑफिस के लिए उत्कृष्ट CCTV सिस्टम इंस्टॉल किया। उनकी सेवा और सपोर्ट बेहतरीन है। किसी भी समस्या का तुरंत समाधान करते हैं।"</p>
+                    <p class="client-quote english-text">"Satvik Infotech installed an excellent CCTV system for our office. Their service and support is outstanding. They solve any problem immediately."</p>
+                    <div class="client-info">
+                        <h4 class="hindi-text">राजेश शर्मा</h4>
+                        <h4 class="english-text">Rajesh Sharma</h4>
+                        <p class="hindi-text">शर्मा जनरल स्टोर, वाड़ी</p>
+                        <p class="english-text">Sharma General Store, Wadi</p>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <img src="" alt="" class="client-img">
+                    <div class="client-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="client-quote hindi-text">"हमारे बार और रेस्टोरेंट के लिए कस्टम सॉफ्टवेयर और तकनीकी सेवाएं देने के लिए Satvik Infotech का धन्यवाद।इन्होंने हमारी ज़रूरतों के हिसाब से एक आसान और बढ़िया सॉफ्टवेयर सिस्टम तैयार किया है, जिससे हमारा रोज़ का काम बहुत आसान हो गया है। इसके अलावा, हमारे यहां के CCTV सिस्टम का मेंटेनेंस भी Satvik Infotech ही देखती है, और इनकी सर्विस हमें अब तक बहुत अच्छी और भरोसेमंद लगी है।
+
+One Pack Down की टीम Satvik Infotech की सेवाओं से खुश है और हम आगे भी इनके साथ काम करना चाहेंगे।"</p>
+                    <p class="client-quote english-text">"We would like to thank Satvik Infotech for providing a custom software solution for our bar and restaurant.They have delivered an excellent software system tailored to our bar and restaurant's requirements, which is both user-friendly and efficient. In addition to that, the CCTV maintenance of our premises is also managed by Satvik Infotech, and we have found their service to be highly professional and reliable.
+
+The One Pack Down team is completely satisfied with the services provided by Satvik Infotech."</p>
+                    <div class="client-info">
+                        <h4 class="hindi-text">Akhilesh Pandey</h4>
+                        <h4 class="english-text">Akhilesh Pandey</h4>
+                        <p class="hindi-text">One Pack Down Bar and Restaurant Rahul hotel Wadi,Nagpur</p>
+                        <p class="english-text">One Pack Down Bar and Restaurant Rahul hotel Wadi,Nagpur</p>
+                    </div>
+                </div>
+                <div class="testimonial-item">
+                    <img src="" alt="" class="client-img">
+                    <div class="client-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="client-quote hindi-text">"मेरे क्रैश हुए लैपटॉप से सभी महत्वपूर्ण डेटा रिकवर करने के लिए बहुत धन्यवाद। मैंने सोचा था कि सब कुछ खो गया है, लेकिन Satvik Infotech टीम ने चमत्कार कर दिया!"</p>
+                    <p class="client-quote english-text">"Thank you so much for recovering all the important data from my crashed laptop. I thought everything was lost, but the Satvik Infotech team worked miracles!"</p>
+                    <div class="client-info">
+                        <h4 class="hindi-text">विकास गुप्ता</h4>
+                        <h4 class="english-text">Vikas Gupta</h4>
+                        <p class="hindi-text">फ्रीलांस ग्राफिक डिजाइनर</p>
+                        <p class="english-text">Freelance Graphic Designer</p>
+                    </div>
+                </div>
+                <div class="slider-nav">
+                    <div class="slider-dot active" data-slide="0"></div>
+                    <div class="slider-dot" data-slide="1"></div>
+                    <div class="slider-dot" data-slide="2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="hindi-text">संपर्क करें</h2>
+                <h2 class="english-text">Contact Us</h2>
+                <p class="hindi-text">हमसे संपर्क करने के लिए नीचे दिए गए फॉर्म का उपयोग करें या सीधे हमें कॉल करें</p>
+                <p class="english-text">Use the form below to contact us or call us directly</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3 class="hindi-text">हमसे संपर्क करें</h3>
+                    <h3 class="english-text">Contact Us</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt contact-icon"></i>
+                            <div class="contact-text">
+                                <h4 class="hindi-text">पता</h4>
+                                <h4 class="english-text">Address</h4>
+                                <p>वाड़ी, नागपुर, महाराष्ट्र</p>
+                                <p>Wadi, Nagpur, Maharashtra</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone-alt contact-icon"></i>
+                            <div class="contact-text">
+                                <h4 class="hindi-text">फोन</h4>
+                                <h4 class="english-text">Phone</h4>
+                                <p><a href="tel:+918378853113">+91 8378853113</a></p>
+                                <p><a href="tel:+919834945373">+91 9834945373</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope contact-icon"></i>
+                            <div class="contact-text">
+                                <h4 class="hindi-text">ईमेल</h4>
+                                <h4 class="english-text">Email</h4>
+                                <p><a href="mailto:mchaukone1992@gmail.com">mchaukone1992@gmail.com</a></p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <img src="MANOJ.jpg" alt="Director" class="director-photo" id="directorPhoto">
+                            <div class="contact-text">
+                                <h4 class="hindi-text">डायरेक्टर</h4>
+                                <h4 class="english-text">Director</h4>
+                        
+                                <p>Manoj B. Chaukone</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock contact-icon"></i>
+                            <div class="contact-text">
+                                <h4 class="hindi-text">कार्य समय</h4>
+                                <h4 class="english-text">Working Hours</h4>
+                                <p class="hindi-text">सोमवार - शनिवार: 9:00 AM - 8:00 PM</p>
+                                <p class="english-text">Monday - Saturday: 9:00 AM - 8:00 PM</p>
+                                <p class="hindi-text">रविवार: आपातकालीन सेवाएं उपलब्ध</p>
+                                <p class="english-text">Sunday: Emergency services available</p>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 class="hindi-text">हमें फॉलो करें</h3>
+                    <h3 class="english-text">Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name" class="hindi-text">आपका नाम</label>
+                            <label for="name" class="english-text">Your Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="hindi-text">ईमेल पता</label>
+                            <label for="email" class="english-text">Email Address</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="hindi-text">फोन नंबर</label>
+                            <label for="phone" class="english-text">Phone Number</label>
+                            <input type="tel" id="phone" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service" class="hindi-text">सर्विस प्रकार</label>
+                            <label for="service" class="english-text">Service Type</label>
+                            <select id="service" class="form-control" required>
+                                <option value="">-- चुनें --</option>
+                                <option value="computer-repair" class="hindi-text">कंप्यूटर रिपेयर</option>
+                                <option value="computer-repair" class="english-text">Computer Repair</option>
+                                <option value="cctv" class="hindi-text">CCTV इंस्टॉलेशन</option>
+                                <option value="cctv" class="english-text">CCTV Installation</option>
+                                <option value="networking" class="hindi-text">नेटवर्किंग</option>
+                                <option value="networking" class="english-text">Networking</option>
+                                <option value="data-recovery" class="hindi-text">डाटा रिकवरी</option>
+                                <option value="data-recovery" class="english-text">Data Recovery</option>
+                                <option value="software" class="hindi-text">सॉफ्टवेयर सॉल्यूशंस</option>
+                                <option value="software" class="english-text">Software Solutions</option>
+                                <option value="parking" class="hindi-text">पार्किंग सॉल्यूशंस</option>
+                                <option value="parking" class="english-text">Parking Solutions</option>
+                                <option value="custom-desktop" class="hindi-text">कस्टमाइज्ड डेस्कटॉप सिस्टम</option>
+                                <option value="custom-desktop" class="english-text">Customized Desktop Systems</option>
+                                <option value="new-products" class="hindi-text">नए प्रोडक्ट सेल</option>
+                                <option value="new-products" class="english-text">New Product Sales</option>
+                                <option value="other" class="hindi-text">अन्य</option>
+                                <option value="other" class="english-text">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="hindi-text">संदेश</label>
+                            <label for="message" class="english-text">Message</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn hindi-text" style="width: 100%;">संदेश भेजें</button>
+                        <button type="submit" class="btn english-text" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>Satvik Infotech</h3>
+                    <p class="hindi-text">वाड़ी, नागपुर स्थित आपका भरोसेमंद IT सर्विस प्रोवाइडर। हम उच्च गुणवत्ता वाली तकनीकी सेवाएं प्रदान करने के लिए प्रतिबद्ध हैं।</p>
+                    <p class="english-text">Your trusted IT service provider based in Wadi, Nagpur. We are committed to providing high quality technical services.</p>
+                    <p class="hindi-text">जहां तकनीक मिलती है भरोसे से।</p>
+                    <p class="english-text">Where technology meets trust.</p>
+                </div>
+                <div class="footer-col">
+                    <h3 class="hindi-text">हमारी सर्विसेज</h3>
+                    <h3 class="english-text">Our Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="#" class="hindi-text">कंप्यूटर रिपेयर और मेंटेनेंस</a><a href="#" class="english-text">Computer Repair & Maintenance</a></li>
+                        <li><a href="#" class="hindi-text">CCTV इंस्टॉलेशन</a><a href="#" class="english-text">CCTV Installation</a></li>
+                        <li><a href="#" class="hindi-text">नेटवर्क सेटअप</a><a href="#" class="english-text">Network Setup</a></li>
+                        <li><a href="#" class="hindi-text">डाटा बैकअप और रिकवरी</a><a href="#" class="english-text">Data Backup & Recovery</a></li>
+                        <li><a href="#" class="hindi-text">बिज़नेस सॉफ्टवेयर</a><a href="#" class="english-text">Business Software</a></li>
+                        <li><a href="#" class="hindi-text">पार्किंग सॉल्यूशंस</a><a href="#" class="english-text">Parking Solutions</a></li>
+                        <li><a href="#" class="hindi-text">कस्टमाइज्ड डेस्कटॉप सिस्टम</a><a href="#" class="english-text">Customized Desktop Systems</a></li>
+                        <li><a href="#" class="hindi-text">नए प्रोडक्ट सेल</a><a href="#" class="english-text">New Product Sales</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="hindi-text">त्वरित लिंक</h3>
+                    <h3 class="english-text">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home" class="hindi-text">होम</a><a href="#home" class="english-text">Home</a></li>
+                        <li><a href="#services" class="hindi-text">सर्विसेज</a><a href="#services" class="english-text">Services</a></li>
+                        <li><a href="#about" class="hindi-text">हमारे बारे में</a><a href="#about" class="english-text">About Us</a></li>
+                        <li><a href="#portfolio" class="hindi-text">पोर्टफोलियो</a><a href="#portfolio" class="english-text">Portfolio</a></li>
+                        <li><a href="#contact" class="hindi-text">संपर्क</a><a href="#contact" class="english-text">Contact</a></li>
+                        <li><a href="#" class="hindi-text">गोपनीयता नीति</a><a href="#" class="english-text">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3 class="hindi-text">न्यूज़लेटर</h3>
+                    <h3 class="english-text">Newsletter</h3>
+                    <p class="hindi-text">हमारे नवीनतम ऑफ़र और अपडेट के लिए सदस्यता लें</p>
+                    <p class="english-text">Subscribe to our latest offers and updates</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="आपका ईमेल" class="form-control hindi-text" style="margin-bottom: 10px;">
+                        <input type="email" placeholder="Your Email" class="form-control english-text" style="margin-bottom: 10px;">
+                        <button type="submit" class="btn hindi-text">सब्सक्राइब</button>
+                        <button type="submit" class="btn english-text">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="hindi-text">&copy; 2023 Satvik Infotech. सर्वाधिकार सुरक्षित।</p>
+                <p class="english-text">&copy; 2023 Satvik Infotech. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const nav = document.getElementById('nav');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            mobileMenuBtn.innerHTML = nav.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('nav ul li a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Testimonial slider
+        const testimonialItems = document.querySelectorAll('.testimonial-item');
+        const sliderDots = document.querySelectorAll('.slider-dot');
+        let currentSlide = 0;
+
+        function showSlide(index) {
+            testimonialItems.forEach(item => item.classList.remove('active'));
+            sliderDots.forEach(dot => dot.classList.remove('active'));
+            
+            testimonialItems[index].classList.add('active');
+            sliderDots[index].classList.add('active');
+            currentSlide = index;
+        }
+
+        sliderDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+
+        // Auto slide change
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % testimonialItems.length;
+            showSlide(currentSlide);
+        }, 5000);
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+            
+            // Here you would typically send the form data to a server
+            // For this example, we'll just show an alert
+            if (currentLanguage === 'hindi') {
+                alert(`धन्यवाद ${name}! आपका संदेश प्राप्त हुआ है। हम जल्द ही आपसे संपर्क करेंगे।`);
+            } else {
+                alert(`Thank you ${name}! Your message has been received. We will contact you soon.`);
+            }
+            
+            // Reset form
+            contactForm.reset();
+        });
+
+        // Language toggle functionality
+        const languageToggle = document.getElementById('languageToggle');
+        let currentLanguage = 'hindi';
+
+        function toggleLanguage() {
+            if (currentLanguage === 'hindi') {
+                // Switch to English
+                currentLanguage = 'english';
+                document.querySelectorAll('.hindi-text').forEach(el => el.style.display = 'none');
+                document.querySelectorAll('.english-text').forEach(el => el.style.display = 'block');
+                document.documentElement.lang = 'en';
+            } else {
+                // Switch to Hindi
+                currentLanguage = 'hindi';
+                document.querySelectorAll('.english-text').forEach(el => el.style.display = 'none');
+                document.querySelectorAll('.hindi-text').forEach(el => el.style.display = 'block');
+                document.documentElement.lang = 'hi';
+            }
+        }
+
+        // Initialize language
+        toggleLanguage(); // Start with Hindi
+        toggleLanguage(); // Toggle to English to set initial state correctly
+
+        languageToggle.addEventListener('click', toggleLanguage);
+
+        // Photo upload functionality
+        const companyLogo = document.getElementById('companyLogo');
+        const directorPhoto = document.getElementById('directorPhoto');
+        const photoModal = document.getElementById('photoModal');
+        const photoUpload = document.getElementById('photoUpload');
+        const cancelUpload = document.getElementById('cancelUpload');
+        const confirmUpload = document.getElementById('confirmUpload');
+        let currentUploadTarget = null;
+
+        function openPhotoUploadModal(target) {
+            currentUploadTarget = target;
+            photoModal.style.display = 'block';
+            photoUpload.value = '';
+        }
+
+        companyLogo.addEventListener('click', () => openPhotoUploadModal('logo'));
+        directorPhoto.addEventListener('click', () => openPhotoUploadModal('director'));
+
+        cancelUpload.addEventListener('click', () => {
+            photoModal.style.display = 'none';
+        });
+
+        confirmUpload.addEventListener('click', () => {
+            const file = photoUpload.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    if (currentUploadTarget === 'logo') {
+                        companyLogo.src = e.target.result;
+                    } else if (currentUploadTarget === 'director') {
+                        directorPhoto.src = e.target.result;
+                    }
+                    photoModal.style.display = 'none';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                if (currentLanguage === 'hindi') {
+                    alert('कृपया एक फोटो चुनें');
+                } else {
+                    alert('Please select a photo');
+                }
+            }
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === photoModal) {
+                photoModal.style.display = 'none';
+            }
+        });
+
+        // Animation on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.service-card, .about-img, .portfolio-item');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        // Set initial state for animated elements
+        document.querySelectorAll('.service-card, .about-img, .portfolio-item').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(30px)';
+            element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
